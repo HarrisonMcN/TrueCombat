@@ -6,15 +6,16 @@ public class Damage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public int damageAmount;
+    public GameObject hitBox;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
 
-        if(collision.gameObject.tag == "Player")
+        if(hitBox.activeSelf)
         {
             playerHealth.TakeDamage(damageAmount);
-
         }
+
 
         
         
