@@ -1381,6 +1381,7 @@ GameObject:
   - component: {fileID: 1772672646}
   - component: {fileID: 1772672648}
   - component: {fileID: 1772672650}
+  - component: {fileID: 1772672651}
   - component: {fileID: 1772672649}
   m_Layer: 0
   m_Name: Player
@@ -1457,6 +1458,9 @@ MonoBehaviour:
   sprintSpeed: 7
   dodgeSpeed: 10
   dodgeTime: 1
+  stamina: {fileID: 1772672651}
+  sprinting: 0
+  isDodging: 0
   groundDrag: 4
   jumpForce: 12
   jumpCooldown: 0.25
@@ -1488,6 +1492,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+--- !u!114 &1772672651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772672644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf1a27acc1ff0e4d860de6df1c94bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  currentStamina: 0
+  jumpCost: 10
+  dodgeCost: 10
+  sprintCost: 1
+  playerMovement: {fileID: 1772672649}
+  dodgeTick: 0
 --- !u!1 &1953273365
 GameObject:
   m_ObjectHideFlags: 0

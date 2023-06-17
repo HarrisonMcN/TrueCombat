@@ -9,6 +9,11 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed;
     public float dodgeSpeed;
     public float dodgeTime;
+    public Stamina stamina;
+
+    [Header("Actions")]
+    public bool sprinting;
+    public bool isDodging;
 
     [Header("Misc")]
     public float groundDrag;
@@ -24,8 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public bool readyToJump;
     public bool blocking;
     bool grounded;
-    bool sprinting;
-    bool isDodging;
+
 
     [Header("Keys")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -52,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         //dodgeSpeed = baseSpeed;
 
         readyToJump = true;
+        
     }
 
     private void Update()
@@ -95,10 +100,10 @@ public class PlayerMovement : MonoBehaviour
             readyToJump = true;
         }
         
-
+        // THIS ONE FOR DODGE
         if (Input.GetKey(blockKey) && blocking)
         {
-            if (Input.GetKeyDown(dodgeKey) && !isDodging && !sprinting && grounded)
+            if (Input.GetKeyDown(dodgeKey) && !isDodging && !sprinting && grounded && stamina.currentStamina > 0)
             {
                 baseSpeed = baseSpeed + dodgeSpeed;
                 isDodging = true;
@@ -129,6 +134,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerDodge.transform.rotation = playerBase.transform.rotation;
+
+        
     }
 
     IEnumerator dodgeEye()
