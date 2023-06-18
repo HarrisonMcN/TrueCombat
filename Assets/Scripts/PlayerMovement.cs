@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        //dodgeSpeed = baseSpeed;
+       
 
         readyToJump = true;
         
@@ -61,23 +61,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // ground check
+        
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
         MyInput();
         SpeedControl();
 
-        // handle drag
+        
         if (grounded)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
 
-        if (Input.GetKeyDown(sprintKey) && !isDodging && grounded)
+        //THIS ONE FOR SPRINTING
+        if (Input.GetKeyDown(sprintKey) && !isDodging && grounded && stamina.currentStamina > 0)
         {
             baseSpeed = baseSpeed + sprintSpeed;
 
             sprinting = true;
+        }
+
+        if(stamina.currentStamina <= 0 && sprinting)
+        {
+            baseSpeed = baseSpeed - sprintSpeed;
+            sprinting = false;
         }
 
         if (Input.GetKeyUp(sprintKey) && sprinting)
@@ -87,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
             sprinting = false;
         }
 
+        //THIS ONE FOR BLOCKING
         if (Input.GetKeyDown(blockKey))
         {
             blocking = true;

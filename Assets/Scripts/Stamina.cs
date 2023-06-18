@@ -5,14 +5,15 @@ using UnityEngine;
 public class Stamina : MonoBehaviour
 {
     public int maxStamina;
-    public int currentStamina;
+    public float currentStamina;
 
     public int jumpCost;
     public int dodgeCost;
-    public int sprintCost;
+    public float sprintCost;
     public PlayerMovement playerMovement;
 
     public bool dodgeTick;
+    public bool sprintTick;
     
     void Start()
     {
@@ -35,5 +36,26 @@ public class Stamina : MonoBehaviour
             dodgeTick = true;
 
         }
+
+
+        if (playerMovement.sprinting == false)
+        {
+            sprintTick = false;
+        }
+
+
+        if (playerMovement.sprinting == true)
+        {
+            currentStamina -= sprintCost * Time.deltaTime;
+            dodgeTick = true;
+
+        }
+
+        if (playerMovement.sprinting == false)
+        {
+            currentStamina = Mathf.Round(currentStamina * 1.0f) * 1f;
+
+        }
+        
     }
 }
