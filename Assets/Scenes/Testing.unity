@@ -1509,6 +1509,7 @@ MonoBehaviour:
   jumpCost: 10
   dodgeCost: 10
   sprintCost: 10
+  staminaRegen: 100
   playerMovement: {fileID: 1772672649}
   dodgeTick: 0
   sprintTick: 0

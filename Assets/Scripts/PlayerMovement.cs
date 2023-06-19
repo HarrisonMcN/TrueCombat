@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public bool readyToJump;
     public bool blocking;
-    bool grounded;
+    public bool grounded;
 
 
     [Header("Keys")]
