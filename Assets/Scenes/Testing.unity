@@ -1877,7 +1877,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613193430}
-  m_LocalRotation: {x: 0.09252102, y: 0.00000001765986, z: -0.0000000016409466, w: 0.99571073}
+  m_LocalRotation: {x: 0.09252102, y: -0.000000017659854, z: 0.0000000016409462, w: 0.99571073}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2122,6 +2122,7 @@ MonoBehaviour:
   stamina: {fileID: 1772672651}
   sprinting: 0
   isDodging: 0
+  jumping: 0
   groundDrag: 4
   jumpForce: 12
   jumpCooldown: 0.25
@@ -2168,14 +2169,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStamina: 100
   currentStamina: 0
-  jumpCost: 10
+  jumpCost: 15
   dodgeCost: 15
   sprintCost: 15
-  staminaRegen: 100
+  staminaRegen: 20
   staminaRegenTimer: 0
   playerMovement: {fileID: 1772672649}
   dodgeTick: 0
-  sprintTick: 0
+  jumpTick: 0
 --- !u!1 &1911574669
 GameObject:
   m_ObjectHideFlags: 0

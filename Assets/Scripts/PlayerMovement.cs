@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Actions")]
     public bool sprinting;
     public bool isDodging;
+    public bool jumping;
 
     [Header("Misc")]
     public float groundDrag;
@@ -141,9 +142,7 @@ public class PlayerMovement : MonoBehaviour
             playerDodge.SetActive(false);
         }
 
-        playerDodge.transform.rotation = playerBase.transform.rotation;
 
-        
     }
 
     IEnumerator dodgeEye()
@@ -165,9 +164,11 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if(Input.GetKey(jumpKey) && readyToJump && grounded && stamina.currentStamina > 0)
         {
             readyToJump = false;
+
+            jumping = true;
 
             Jump();
 
@@ -212,6 +213,8 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+
+        jumping = false;
     }
 
    

@@ -10,18 +10,19 @@ public class Stamina : MonoBehaviour
     public int jumpCost;
     public int dodgeCost;
     public float sprintCost;
-    public float staminaRegen = 100;
-    public float staminaRegenTimer = 0;
+    public float staminaRegen;
+    public float staminaRegenTimer;
     public PlayerMovement playerMovement;
 
     public bool dodgeTick;
-    public bool sprintTick;
+    public bool jumpTick;
     
     void Start()
     {
         currentStamina = maxStamina;
 
         dodgeTick = false;
+        jumpTick = false;
     }
 
     
@@ -39,25 +40,32 @@ public class Stamina : MonoBehaviour
 
         }
 
-
-        if (playerMovement.sprinting == false)
+        if (playerMovement.jumping == false)
         {
-            sprintTick = false;
+            jumpTick = false;
         }
+
+        if (playerMovement.jumping == true && !jumpTick)
+        {
+            currentStamina -= jumpCost;
+            jumpTick = true;
+        }
+
+
 
 
         if (playerMovement.sprinting == true)
         {
             currentStamina -= sprintCost * Time.deltaTime;
-            dodgeTick = true;
+           
 
         }
 
-        if (playerMovement.sprinting == false)
-        {
-            currentStamina = Mathf.Round(currentStamina * 1.0f) * 1f;
+        //if (playerMovement.sprinting == false)
+        //{
+            //currentStamina = Mathf.Round(currentStamina * 1.0f) * 1f;
 
-        }
+        //}
 
         if (playerMovement.blocking || playerMovement.isDodging || playerMovement.sprinting || !playerMovement.grounded)
         {

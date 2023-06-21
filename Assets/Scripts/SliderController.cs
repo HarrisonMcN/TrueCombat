@@ -11,7 +11,6 @@ public class SliderController : MonoBehaviour
     public bool currentStamina;
     public bool currentHealth;
 
-    float progress = 0;
     public Slider slider;
 
     private void Update()
