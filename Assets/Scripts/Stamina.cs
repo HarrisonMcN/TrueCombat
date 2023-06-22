@@ -28,6 +28,13 @@ public class Stamina : MonoBehaviour
     
     void Update()
     {
+        {
+            if (currentStamina >= maxStamina)
+            {
+                currentStamina = maxStamina;
+            }
+        }
+
         if (playerMovement.isDodging == false)
         {
             dodgeTick = false;

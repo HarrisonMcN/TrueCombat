@@ -10,6 +10,9 @@ public class SliderController : MonoBehaviour
 
     public bool currentStamina;
     public bool currentHealth;
+    public bool heals;
+
+
 
     public Slider slider;
 
@@ -17,12 +20,16 @@ public class SliderController : MonoBehaviour
     {
         if (currentStamina == true)
         {
+            currentHealth = false;
             slider.value = stamina.currentStamina;
         }
 
         if (currentHealth == true)
         {
+            currentStamina = false;
             slider.value = playerHealth.currentHealth;
         }
+
+        
     }
 }
