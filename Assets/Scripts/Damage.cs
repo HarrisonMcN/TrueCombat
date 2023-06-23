@@ -5,20 +5,26 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public int damageAmount;
+    public PlayerMovement playerMovement;
+    public float damageAmount;
     public GameObject hitBox;
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if(hitBox.activeSelf)
+        if(hitBox.activeSelf && !playerMovement.blocking)
         {
             playerHealth.TakeDamage(damageAmount);
         }
 
+        if (hitBox.activeSelf && playerMovement.blocking)
+        {
+            playerHealth.TakeDamage(damageAmount / 2f);
+        }
 
-        
-        
+
+
+
     }
 
 }

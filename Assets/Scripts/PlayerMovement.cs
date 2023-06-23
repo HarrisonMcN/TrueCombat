@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        playerDodge.transform.rotation = playerBase.transform.rotation;
         
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
